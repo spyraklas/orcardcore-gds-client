@@ -1,0 +1,22 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/src/backend/OrchardCore.Cms.Web/App_Data
+/src/backend/OrchardCore.Cms.Web/bin/Debug/net8.0
+/src/backend/OrchardCore.Cms.Web/obj
+/src/frontend/OrcardCore.Client.Web/bin/Debug/net8.0
+/src/frontend/OrcardCore.Client.Web/obj
+/src/frontend/OrcardCore.Client.Web/appsettings.Development.json
+/src/frontend/OrcardCore.Client.Web/OrcardCore.Client.Web.csproj.user
+/src/frontend/OrchardCore.Client.Core/bin/Debug/net8.0
+/src/frontend/OrchardCore.Client.Core/obj
+/src/frontend/OrchardCore.Client.GdsFrontEnd/bin/Debug/net8.0
+/src/frontend/OrchardCore.Client.Assets/bin/Debug/net8.0
+/src/frontend/OrchardCore.Client.Assets/node_modules
+/src/frontend/OrchardCore.Client.Assets/obj
+/src/frontend/OrchardCore.Client.Assets/wwwroot/assets
+/src/frontend/OrchardCore.Client.Assets/wwwroot/javascripts
+/src/frontend/OrchardCore.Client.Assets/wwwroot/stylesheets
+/src/frontend/OrchardCore.Client.Assets/package-lock.json
