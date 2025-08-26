@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "src\\frontend\\OrcardCore.Client.Web\\OrcardCore.Client.Web.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "src\\backend\\OrchardCore.Cms.Web\\OrchardCore.Cms.Web.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
