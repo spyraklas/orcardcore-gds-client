@@ -13,29 +13,38 @@ namespace OrchardCore.Client.Core.Extensions
 {
     public static class ServiceExtensions
     {
-        public static void AddOrchardCoreClient(this IServiceCollection services, IConfiguration configuration, bool enableRedis = false)
+        public static void AddOrchardCoreClient(this IServiceCollection services, IConfiguration configuration)
         {
+            //Bind configuration settings
+            services.Configure<CacheOptions>(options => configuration.GetSection(nameof(CacheOptions)).Bind(options));
             services.Configure<OrchardCoreOptions>(options => configuration.GetSection(nameof(OrchardCoreOptions)).Bind(options));
             services.Configure<RedisCacheOptions>(options => configuration.GetSection(nameof(RedisCacheOptions)).Bind(options));
 
             //Register caching handlers
-            if (enableRedis)
+            var cacheOptions = new CacheOptions();
+            configuration.GetSection(nameof(OrchardCoreOptions)).Bind(cacheOptions);
+            if (cacheOptions.UseCache)
             {
-                services.AddSingleton<ICacheConnection, RedisCacheConnection>();
-                services.AddSingleton<ICacheHelper, RedisCacheHelper>();
+                if (cacheOptions.EnabledRedisCache)
+                {
+                    services.AddSingleton<ICacheConnection, RedisCacheConnection>();
+                    services.AddSingleton<ICacheHelper, RedisCacheHelper>();
+                }
+                else
+                {
+                    services.AddSingleton<ICacheHelper, MemoryCacheHelper>();
+                }
             }
             else
             {
-                services.AddSingleton<ICacheHelper, MemoryCacheHelper>();
+                services.AddSingleton<ICacheHelper, SessionCacheHelper>();
             }
 
-            var orchardCoreOptions = new OrchardCoreOptions();
-            configuration.GetSection(nameof(OrchardCoreOptions)).Bind(orchardCoreOptions);
-
+            //configure session and httpcontext accessor and httpclient factory
             services.AddHttpContextAccessor();
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromMinutes(orchardCoreOptions.SessionTimeoutInMinutes);
+                options.IdleTimeout = TimeSpan.FromMinutes(cacheOptions.SessionTimeoutInMinutes);
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
                 options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
@@ -44,6 +53,9 @@ namespace OrchardCore.Client.Core.Extensions
             services.AddMemoryCache();
             services.AddDistributedMemoryCache();
 
+            //configure GraphQL client
+            var orchardCoreOptions = new OrchardCoreOptions();
+            configuration.GetSection(nameof(OrchardCoreOptions)).Bind(orchardCoreOptions);
             services.AddScoped<IGraphQLClient>(s =>
             {
                 var option = new GraphQLHttpClientOptions()

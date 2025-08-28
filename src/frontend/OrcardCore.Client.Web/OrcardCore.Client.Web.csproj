@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OrchardCore.Client.Assets\OrchardCore.Client.Assets.csproj" />
     <ProjectReference Include="..\OrchardCore.Client.Core\OrchardCore.Client.Core.csproj" />
-    <ProjectReference Include="..\OrchardCore.Client.GdsFrontEnd\OrchardCore.Client.Assets.csproj" />
   </ItemGroup>
 
 </Project>

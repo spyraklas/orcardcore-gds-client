@@ -6,8 +6,6 @@
 
         public string ConnectionString { get; set; }
 
-        public bool RedisCacheEnabled { get; set; }
-
         public int WorkerThreads { get; set; }
 
         public int IocpThreads { get; set; }

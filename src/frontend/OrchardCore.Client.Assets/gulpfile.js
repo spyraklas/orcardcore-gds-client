@@ -32,7 +32,7 @@ function jquery() {
 //        .pipe(sass())
 //        .pipe(sourcemaps.write())
 //        .pipe(replace(/assets\//g, 'contents/assets/'))
-//        .pipe(dest('./wwwroot/'))
+//        .pipe(dest('./wwwroot/stylesheets/'))
 //        .pipe(csso({ restructure: false }))
 //        .pipe(rename(function (path) {
 //            return {
@@ -41,11 +41,12 @@ function jquery() {
 //                extname: '.min.css'
 //            }
 //        }))
-//        .pipe(dest('./wwwroot/'));
+//        .pipe(dest('./wwwroot/stylesheets/'));
 //}
 
 function gdsStyles() {
     return src('./node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.css')
+        .pipe(replace(/assets\//g, 'contents/assets/'))
         .pipe(dest('./wwwroot/stylesheets/'));
 }
 

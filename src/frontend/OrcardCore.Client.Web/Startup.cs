@@ -1,5 +1,4 @@
 ﻿using OrchardCore.Client.Assets;
-using OrchardCore.Client.Core.Config;
 using OrchardCore.Client.Core.Extensions;
 
 namespace OrcardCore.Client.Web
@@ -80,9 +79,7 @@ namespace OrcardCore.Client.Web
         /// <param name="services">Service collection of the application.</param>
         private void SetConfiguration(IServiceCollection services)
         {
-            var redisCacheOptions = new RedisCacheOptions();
-            Configuration.GetSection(nameof(RedisCacheOptions)).Bind(redisCacheOptions);
-            services.AddOrchardCoreClient(Configuration, redisCacheOptions.RedisCacheEnabled);
+            services.AddOrchardCoreClient(Configuration);
         }
 
         /// <summary>
