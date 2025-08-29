@@ -1,4 +1,5 @@
-﻿using OrchardCore.Client.Assets;
+﻿using OrcardCore.Client.Web.Repositories;
+using OrchardCore.Client.Assets;
 using OrchardCore.Client.Core.Extensions;
 
 namespace OrcardCore.Client.Web
@@ -99,6 +100,7 @@ namespace OrcardCore.Client.Web
         /// <param name="services">Service collection of the application.</param>
         private void SetDI(IServiceCollection services)
         {
+            services.AddScoped<IPageRepository, PageRepository>();
         }
 
         #endregion

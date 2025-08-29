@@ -1,0 +1,21 @@
+﻿@using OrcardCore.Client.Web.Entities
+@model PageModel
+
+@if (Model.PageInfo.SeoMeta != null && !string.IsNullOrEmpty(Model.PageInfo.SeoMeta.MetaKeywords))
+{
+    <meta name="keywords" content="@Model.PageInfo.SeoMeta.MetaKeywords" />
+}
+
+@if (Model.PageInfo.SeoMeta != null && !string.IsNullOrEmpty(Model.PageInfo.SeoMeta.MetaDescription))
+{
+    <meta name="description" content="@Model.PageInfo.SeoMeta.MetaDescription" />
+}
+
+@if (Model.PageInfo.SeoMeta != null && Model.PageInfo.SeoMeta.CustomMetaTags !=null)
+{
+    @foreach (CustomMetaTag tag in Model.PageInfo.SeoMeta.CustomMetaTags)
+    {
+        <meta name="@tag.Name" content="@tag.Content" />
+    }
+}
+

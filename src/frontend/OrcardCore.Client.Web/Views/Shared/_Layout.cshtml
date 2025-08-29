@@ -3,9 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>GOV.UK - The best place to find government services and information</title>
+    <title>GOV.UK - @ViewData["Title"]</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#1d70b8">
+    @await RenderSectionAsync("Meta", required: false)
     <link rel="icon" sizes="48x48" href="/contents/assets/rebrand/images/favicon.ico">
     <link rel="icon" sizes="any" href="/contents/assets/rebrand/images/favicon.svg" type="image/svg+xml">
     <link rel="mask-icon" href="/contents/assets/rebrand/images/govuk-icon-mask.svg" color="#1d70b8">

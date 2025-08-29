@@ -1,10 +1,18 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model PageModel
+@{
+    ViewData["Title"] = Model.PageInfo.Title;
 }
 
-<div class="govuk-grid-row">        
-    <div class="govuk-grid-column-full">
-        <h1 class="govuk-heading-l">Welcome</h1>
-        <p class="govuk-body">Learn about building Web apps with <a class="govuk-link" href="https://design-system.service.gov.uk/get-started">GDS Components</a> and using <a class="govuk-link" href="https://orchardcore.net/#getting-started">Orchard Core CMS Framework</a>.</p>
-    </div>
-</div>
+@Html.Raw(Model.PageInfo.HtmlBody)
+
+@section Meta
+{
+    <partial name="_Meta" model="Model" />
+}
+
+@section Scripts
+{
+    <script type="text/javascript">
+        @Html.Raw(Model.PageInfo.JavaScript)
+    </script>
+}
