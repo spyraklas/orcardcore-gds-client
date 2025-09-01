@@ -20,3 +20,5 @@
 /src/frontend/OrchardCore.Client.Assets/wwwroot/javascripts
 /src/frontend/OrchardCore.Client.Assets/wwwroot/stylesheets
 /src/frontend/OrchardCore.Client.Assets/package-lock.json
+/src/backend/OrchardCore.HeadlessAddonsTheme/bin/Debug/net8.0
+/src/backend/OrchardCore.HeadlessAddonsTheme/obj
