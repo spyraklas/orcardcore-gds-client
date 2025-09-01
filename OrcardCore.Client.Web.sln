@@ -15,6 +15,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackEnd", "BackEnd", "{A774
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrchardCore.Cms.Web", "src\backend\OrchardCore.Cms.Web\OrchardCore.Cms.Web.csproj", "{6E24D8CF-BC76-43BB-BBE3-0ED8CCD48617}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrchardCore.HeadlessAddonsTheme", "src\backend\OrchardCore.HeadlessAddonsTheme\OrchardCore.HeadlessAddonsTheme.csproj", "{42A3B209-7B1F-4C7E-83D2-08BF016C30EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{6E24D8CF-BC76-43BB-BBE3-0ED8CCD48617}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E24D8CF-BC76-43BB-BBE3-0ED8CCD48617}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E24D8CF-BC76-43BB-BBE3-0ED8CCD48617}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42A3B209-7B1F-4C7E-83D2-08BF016C30EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42A3B209-7B1F-4C7E-83D2-08BF016C30EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42A3B209-7B1F-4C7E-83D2-08BF016C30EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42A3B209-7B1F-4C7E-83D2-08BF016C30EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{D1B0FC95-41BD-41C7-983E-11E38D944026} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{7B9EA490-1AAA-4451-AB92-90FB45C7099B} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{6E24D8CF-BC76-43BB-BBE3-0ED8CCD48617} = {A774676B-D113-4AD5-B3EF-D135DD69FD08}
+		{42A3B209-7B1F-4C7E-83D2-08BF016C30EB} = {A774676B-D113-4AD5-B3EF-D135DD69FD08}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {39767C3B-56CE-46E4-9A7F-ABB51A85EF67}

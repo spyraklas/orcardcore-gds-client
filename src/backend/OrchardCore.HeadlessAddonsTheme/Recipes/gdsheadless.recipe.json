@@ -1,0 +1,1149 @@
+{
+  "name": "Headless GDS Website",
+  "displayName": "Headless GDS Website",
+  "description": "Ready to use headless GovUK GDS website.",
+  "author": "Spyros Ioannidis",
+  "website": "",
+  "version": "1.0.0",
+  "issetuprecipe": true,
+  "categories": [ "default" ],
+  "tags": [ "GovUK GDS", "headless" ],
+  "steps": [
+    {
+      "name": "Feature",
+      "enable": [
+        "Application.Default",
+        "OrchardCore.Cms.Web",
+        "OrchardCore.Settings",
+        "OrchardCore.Admin",
+        "OrchardCore.Liquid",
+        "OrchardCore.Contents",
+        "OrchardCore.ContentTypes",
+        "OrchardCore.Shortcodes",
+        "OrchardCore.Html",
+        "OrchardCore.Recipes.Core",
+        "OrchardCore.Title",
+        "OrchardCore.AdminMenu",
+        "OrchardCore.Templates",
+        "OrchardCore.Alias",
+        "OrchardCore.Apis.GraphQL",
+        "OrchardCore.Autoroute",
+        "OrchardCore.Scripting",
+        "OrchardCore.Recipes",
+        "OrchardCore.ContentFields",
+        "OrchardCore.ContentFields.Indexing.SQL",
+        "OrchardCore.Roles.Core",
+        "OrchardCore.Users",
+        "OrchardCore.Deployment",
+        "OrchardCore.CustomSettings",
+        "OrchardCore.Deployment.Remote",
+        "OrchardCore.Diagnostics",
+        "OrchardCore.Widgets",
+        "OrchardCore.Resources",
+        "OrchardCore.Features",
+        "OrchardCore.Flows",
+        "OrchardCore.HomeRoute",
+        "OrchardCore.Indexing",
+        "OrchardCore.Rules",
+        "OrchardCore.Layers",
+        "OrchardCore.Lists",
+        "OrchardCore.Markdown",
+        "OrchardCore.Media",
+        "OrchardCore.Menu",
+        "OrchardCore.Navigation",
+        "OrchardCore.OpenId",
+        "OrchardCore.OpenId.Management",
+        "OrchardCore.OpenId.Server",
+        "OrchardCore.OpenId.Validation",
+        "OrchardCore.Placements",
+        "OrchardCore.Queries.Core",
+        "OrchardCore.Queries",
+        "OrchardCore.Queries.Sql",
+        "OrchardCore.Roles",
+        "OrchardCore.Security",
+        "OrchardCore.Seo",
+        "OrchardCore.Taxonomies",
+        "OrchardCore.Taxonomies.ContentsAdminList",
+        "OrchardCore.Themes",
+        "TheAdmin"
+      ]
+    },
+    {
+      "name": "themes",
+      "admin": "TheAdmin",
+      "site": ""
+    },
+    {
+      "name": "Roles",
+      "Roles": [
+        {
+          "Name": "Administrator",
+          "Description": "A system role that grants all permissions to the assigned users.",
+          "Permissions": []
+        },
+        {
+          "Name": "Moderator",
+          "Description": "Grants users the ability to moderate content.",
+          "Permissions": [
+            "AccessAdminPanel",
+            "ManageOwnUserInformation"
+          ]
+        },
+        {
+          "Name": "Editor",
+          "Description": "Grants users the ability to edit existing content.",
+          "Permissions": [
+            "AccessAdminPanel",
+            "PublishContent",
+            "EditContent",
+            "DeleteContent",
+            "PreviewContent",
+            "CloneContent",
+            "ListContent",
+            "ManageOwnUserInformation",
+            "ManageMediaContent",
+            "ManageOwnMediaContent",
+            "ManageQueries",
+            "ManageAdminMenu",
+            "ManageTemplates",
+            "ManagePlacements",
+            "ManageSqlQueries"
+          ]
+        },
+        {
+          "Name": "Author",
+          "Description": "Grants users the ability to create content.",
+          "Permissions": [
+            "AccessAdminPanel",
+            "PublishOwnContent",
+            "EditOwnContent",
+            "DeleteOwnContent",
+            "PreviewOwnContent",
+            "CloneOwnContent",
+            "ManageOwnUserInformation",
+            "ManageOwnMediaContent"
+          ]
+        },
+        {
+          "Name": "Contributor",
+          "Description": "Grants users the ability to contribute content.",
+          "Permissions": [
+            "AccessAdminPanel",
+            "EditOwnContent",
+            "PreviewOwnContent",
+            "CloneOwnContent",
+            "ManageOwnUserInformation",
+            "ManageOwnMediaContent"
+          ]
+        },
+        {
+          "Name": "Authenticated",
+          "Description": "A system role representing all authenticated users.",
+          "Permissions": [
+            "ViewContent",
+            "ExecuteGraphQL",
+            "ExecuteApiAll"
+          ]
+        },
+        {
+          "Name": "Anonymous",
+          "Description": "A system role representing all non-authenticated users.",
+          "Permissions": [
+            "ViewContent"
+          ]
+        },
+        {
+          "Name": "GraphQLClient",
+          "Permissions": [
+            "AccessContentApi",
+            "ExecuteGraphQLMutations",
+            "ExecuteGraphQL",
+            "ExecuteApiAll"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ContentDefinition",
+      "ContentTypes": [
+        {
+          "Name": "Page",
+          "DisplayName": "Page",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            },
+            "GraphQLContentTypeSettings": {
+              "Hidden": false
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "Page",
+              "Name": "Page",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "3"
+                }
+              }
+            },
+            {
+              "PartName": "AliasPart",
+              "Name": "AliasPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "4"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "GraphQLContentTypePartSettings": {
+                  "Collapse": false,
+                  "Hidden": false,
+                  "PreventFieldNameCollision": false
+                },
+                "TitlePartSettings": {
+                  "Options": 3,
+                  "RenderTitle": true
+                }
+              }
+            },
+            {
+              "PartName": "AutoroutePart",
+              "Name": "AutoroutePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                },
+                "GraphQLContentTypePartSettings": {
+                  "Collapse": false,
+                  "Hidden": false,
+                  "PreventFieldNameCollision": false
+                },
+                "AutoroutePartSettings": {
+                  "AllowCustomPath": true,
+                  "Pattern": "{{ ContentItem.DisplayText | slugify }}",
+                  "ShowHomepageOption": false,
+                  "AllowUpdatePath": true,
+                  "AllowDisabled": false,
+                  "AllowRouteContainedItems": false,
+                  "ManageContainedItemRoutes": false,
+                  "AllowAbsolutePath": false
+                }
+              }
+            },
+            {
+              "PartName": "SeoMetaPart",
+              "Name": "SeoMetaPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "5"
+                },
+                "GraphQLContentTypePartSettings": {
+                  "Collapse": false,
+                  "Hidden": false,
+                  "PreventFieldNameCollision": false
+                },
+                "SeoMetaPartSettings": {
+                  "DisplayKeywords": true,
+                  "DisplayCustomMetaTags": true,
+                  "DisplayOpenGraph": false,
+                  "DisplayTwitter": false,
+                  "DisplayGoogleSchema": false
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "SocialMetaSettings",
+          "DisplayName": "Social Meta Settings",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Stereotype": "CustomSettings"
+            },
+            "FullTextAspectSettings": {}
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "SocialMetaSettings",
+              "Name": "SocialMetaSettings",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "SharedContent",
+          "DisplayName": "Shared Content",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            },
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            },
+            "GraphQLContentTypeSettings": {
+              "Hidden": false
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "SharedContent",
+              "Name": "SharedContent",
+              "Settings": {}
+            },
+            {
+              "PartName": "AliasPart",
+              "Name": "AliasPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                }
+              }
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "2"
+                }
+              }
+            },
+            {
+              "PartName": "TitlePart",
+              "Name": "TitlePart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                },
+                "GraphQLContentTypePartSettings": {
+                  "Collapse": false,
+                  "Hidden": false,
+                  "PreventFieldNameCollision": false
+                },
+                "TitlePartSettings": {
+                  "Options": 3,
+                  "RenderTitle": true
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "HtmlEditor",
+          "DisplayName": "Html Editor",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false
+            },
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            },
+            "GraphQLContentTypeSettings": {
+              "Hidden": false
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "HtmlEditor",
+              "Name": "HtmlEditor",
+              "Settings": {}
+            },
+            {
+              "PartName": "HtmlBodyPart",
+              "Name": "HtmlBodyPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0",
+                  "Editor": "Trumbowyg"
+                },
+                "GraphQLContentTypePartSettings": {
+                  "Collapse": false,
+                  "Hidden": false,
+                  "PreventFieldNameCollision": false
+                },
+                "HtmlBodyPartSettings": {
+                  "SanitizeHtml": true
+                },
+                "HtmlBodyPartTrumbowygEditorSettings": {
+                  "Options": "{\r\n    autogrow: true,\r\n    btns: [\r\n        [\u0022viewHTML\u0022],\r\n        [\u0022undo\u0022, \u0022redo\u0022],\r\n        [\u0022formatting\u0022],\r\n        [\u0022strong\u0022, \u0022em\u0022, \u0022del\u0022],\r\n        [\u0022foreColor\u0022, \u0022backColor\u0022],\r\n        [\u0022superscript\u0022, \u0022subscript\u0022],\r\n        [\u0022link\u0022],\r\n        [\u0022insertShortcode\u0022],\r\n        [\u0022image\u0022],\r\n        [\u0022align\u0022],\r\n        [\u0022unorderedList\u0022, \u0022orderedList\u0022],\r\n        [\u0022horizontalRule\u0022],\r\n        [\u0022removeformat\u0022],\r\n        [\u0022fullscreen\u0022]\r\n    ],\r\n    btnsDef: {\r\n        align: {\r\n            dropdown: [\u0022justifyLeft\u0022, \u0022justifyCenter\u0022, \u0022justifyRight\u0022, \u0022justifyFull\u0022],\r\n            ico: \u0022justifyLeft\u0022\r\n        },\r\n        image: {\r\n            dropdown: [\u0022insertImage\u0022, \u0022base64\u0022, \u0022noembed\u0022],\r\n            ico: \u0022insertImage\u0022\r\n        }\r\n    }\r\n}",
+                  "InsertMediaWithUrl": true,
+                  "AllowCustomScripts": false
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "LiquidEditor",
+          "DisplayName": "Liquid Editor",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false
+            },
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            },
+            "GraphQLContentTypeSettings": {
+              "Hidden": false
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "LiquidEditor",
+              "Name": "LiquidEditor",
+              "Settings": {}
+            },
+            {
+              "PartName": "LiquidPart",
+              "Name": "LiquidPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "HtmlRawEditor",
+          "DisplayName": "Html Raw Editor",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false
+            },
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            },
+            "GraphQLContentTypeSettings": {
+              "Hidden": false
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "HtmlRawEditor",
+              "Name": "HtmlRawEditor",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            },
+            {
+              "PartName": "HtmlBodyPart",
+              "Name": "HtmlBodyPart",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "1"
+                },
+                "GraphQLContentTypePartSettings": {
+                  "Collapse": false,
+                  "Hidden": false,
+                  "PreventFieldNameCollision": false
+                },
+                "HtmlBodyPartSettings": {
+                  "SanitizeHtml": false
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "SharedContentPicker",
+          "DisplayName": "Shared Content Picker",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": false,
+              "Listable": false,
+              "Draftable": false,
+              "Versionable": false,
+              "Stereotype": "Widget",
+              "Securable": false
+            },
+            "FullTextAspectSettings": {
+              "IncludeFullTextTemplate": false,
+              "IncludeBodyAspect": true,
+              "IncludeDisplayText": true
+            },
+            "GraphQLContentTypeSettings": {
+              "Hidden": false
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "SharedContentPicker",
+              "Name": "SharedContentPicker",
+              "Settings": {
+                "ContentTypePartSettings": {
+                  "Position": "0"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ContentHtmlWrapper",
+          "DisplayName": "Content Html Wrapper",
+          "Settings": {
+            "ContentTypeSettings": {
+              "Creatable": true,
+              "Listable": true,
+              "Draftable": true,
+              "Versionable": true,
+              "Securable": true
+            }
+          },
+          "ContentTypePartDefinitionRecords": [
+            {
+              "PartName": "ContentHtmlWrapper",
+              "Name": "ContentHtmlWrapper",
+              "Settings": {}
+            },
+            {
+              "PartName": "FlowPart",
+              "Name": "FlowPart",
+              "Settings": {}
+            }
+          ]
+        }
+      ],
+      "ContentParts": [
+        {
+          "Name": "Page",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "TextField",
+              "Name": "JavaScript",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "JavaScript",
+                  "Editor": "Monaco",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {
+                  "Required": false
+                },
+                "TextFieldMonacoEditorSettings": {
+                  "Options": "{\r\n  \u0022automaticLayout\u0022: true,\r\n  \u0022language\u0022: \u0022javascript\u0022\r\n}"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "SocialMetaSettings",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "MediaField",
+              "Name": "DefaultSocialImage",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Default social image",
+                  "Position": "1"
+                },
+                "MediaFieldSettings": {
+                  "Multiple": false
+                }
+              }
+            },
+            {
+              "FieldName": "MediaField",
+              "Name": "OpenGraphImage",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Open graph image",
+                  "Position": "2"
+                },
+                "MediaFieldSettings": {
+                  "Multiple": false
+                }
+              }
+            },
+            {
+              "FieldName": "MediaField",
+              "Name": "TwitterImage",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Twitter Image",
+                  "Position": "3"
+                },
+                "MediaFieldSettings": {
+                  "Multiple": false
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "OpenGraphType",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Open Graph Type",
+                  "Position": "4"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "TwitterCard",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Twitter Card",
+                  "Position": "8"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "TwitterCreator",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Twitter Creator",
+                  "Position": "10"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "TwitterSite",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Twitter Site",
+                  "Position": "11"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "GoogleSchema",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Google Schema",
+                  "Editor": "CodeMirror",
+                  "Position": "12"
+                },
+                "TextFieldSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "OpenGraphSiteName",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Open Graph Site Name",
+                  "Position": "6"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "OpenGraphAppId",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Open Graph App Id",
+                  "Position": "7"
+                }
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "DefaultMetaDescription",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Default Meta Description",
+                  "Editor": "CodeMirror",
+                  "Position": "0"
+                },
+                "TextFieldSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "DefaultTwitterDescription",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Default Twitter Description",
+                  "Editor": "CodeMirror",
+                  "Position": "9"
+                },
+                "TextFieldSettings": {}
+              }
+            },
+            {
+              "FieldName": "TextField",
+              "Name": "DefaultOpenGraphDescription",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Default Open Graph Description",
+                  "Editor": "CodeMirror",
+                  "Position": "5"
+                },
+                "TextFieldSettings": {}
+              }
+            }
+          ]
+        },
+        {
+          "Name": "HtmlRawEditor",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": []
+        },
+        {
+          "Name": "SharedContentPicker",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "ContentPickerField",
+              "Name": "Content",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Content",
+                  "Position": "0"
+                },
+                "ContentPickerFieldSettings": {
+                  "Required": false,
+                  "Multiple": true,
+                  "DisplayAllContentTypes": false,
+                  "DisplayedContentTypes": [
+                    "SharedContent"
+                  ],
+                  "DisplayedStereotypes": [],
+                  "TitlePattern": "{{ Model.ContentItem | display_text }}"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "Name": "ContentHtmlWrapper",
+          "Settings": {},
+          "ContentPartFieldDefinitionRecords": [
+            {
+              "FieldName": "HtmlField",
+              "Name": "HtmlBegin",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Html Begin"
+                },
+                "HtmlFieldSettings": {
+                  "SanitizeHtml": false
+                }
+              }
+            },
+            {
+              "FieldName": "HtmlField",
+              "Name": "HtmlEnd",
+              "Settings": {
+                "ContentPartFieldSettings": {
+                  "DisplayName": "Html End"
+                },
+                "HtmlFieldSettings": {
+                  "SanitizeHtml": false
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Templates",
+      "Templates": {
+        "Content": {
+          "Content": "[file:text('Templates/Content.liquid')]"
+        },
+        "Content__Page": {
+          "Content": "[file:text('Templates/Content-Page.liquid')]"
+        },
+        "Content__SharedContent": {
+          "Content": "[file:text('Templates/Content-SharedContent.liquid')]"
+        },
+        "Menu": {
+          "Content": "[file:text('Templates/Menu.liquid')]"
+        },
+        "MenuItem": {
+          "Content": "[file:text('Templates/MenuItem.liquid')]"
+        },
+        "MenuItemLink__LinkMenuItem": {
+          "Content": "[file:text('Templates/MenuItemLink-LinkMenuItem.liquid')]"
+        },
+        "Widget__HtmlEditor": {
+          "Content": "[file:text('Templates/Widget-HtmlEditor.liquid')]"
+        },
+        "Widget__HtmlRawEditor": {
+          "Content": "[file:text('Templates/Widget-HtmlRawEditor.liquid')]"
+        },
+        "Widget__LiquidEditor": {
+          "Content": "[file:text('Templates/Widget-LiquidEditor.liquid')]"
+        },
+        "Widget__SharedContentPicker": {
+          "Content": "[file:text('Templates/Widget-SharedContentPicker.liquid')]"
+        }
+      }
+    },
+    {
+      "name": "AdminMenu",
+      "data": [
+        {
+          "Id": "[js:uuid()]",
+          "Name": "Page",
+          "Enabled": true,
+          "MenuItems": [
+            {
+              "$type": "OrchardCore.Contents.AdminNodes.ContentTypesAdminNode, OrchardCore.Contents",
+              "ShowAll": false,
+              "ContentTypes": [
+                {
+                  "ContentTypeId": "Page",
+                  "IconClass": "far fa-file-alt"
+                }
+              ],
+              "UniqueId": "[js:uuid()]",
+              "Enabled": true,
+              "Priority": 0,
+              "LinkToFirstChild": true,
+              "LocalNav": false,
+              "Items": [],
+              "Classes": []
+            }
+          ]
+        },
+        {
+          "Id": "[js:uuid()]",
+          "Name": "Taxonomies",
+          "Enabled": true,
+          "MenuItems": [
+            {
+              "$type": "OrchardCore.Contents.AdminNodes.ContentTypesAdminNode, OrchardCore.Contents",
+              "ShowAll": false,
+              "ContentTypes": [
+                {
+                  "ContentTypeId": "Taxonomy",
+                  "IconClass": "fas fa-tags"
+                }
+              ],
+              "UniqueId": "[js:uuid()]",
+              "Enabled": true,
+              "Priority": 0,
+              "LinkToFirstChild": true,
+              "LocalNav": false,
+              "Items": [],
+              "Classes": []
+            }
+          ]
+        },
+        {
+          "Id": "[js:uuid()]",
+          "Name": "Shared Content",
+          "Enabled": true,
+          "MenuItems": [
+            {
+              "$type": "OrchardCore.Contents.AdminNodes.ContentTypesAdminNode, OrchardCore.Contents",
+              "ShowAll": false,
+              "ContentTypes": [
+                {
+                  "ContentTypeId": "SharedContent",
+                  "IconClass": "fab fa-creative-commons-share"
+                }
+              ],
+              "UniqueId": "[js:uuid()]",
+              "Enabled": true,
+              "Priority": 0,
+              "LinkToFirstChild": true,
+              "LocalNav": false,
+              "Items": [],
+              "Classes": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Settings",
+      "AdminSettings": {
+        "DisplayThemeToggler": true,
+        "DisplayMenuFilter": false,
+        "DisplayNewMenu": false,
+        "DisplayTitlesInTopbar": true
+      },
+      "HomeRoute": {
+        "Action": "Index",
+        "Controller": "Admin",
+        "Area": "OrchardCore.Admin"
+      },
+      "TaxonomyContentsAdminListSettings": {
+        "TaxonomyContentItemIds": []
+      }
+    },
+    {
+      "name": "OpenIdServerSettings",
+      "OpenIdServerSettings": {
+        "AccessTokenFormat": "DataProtection",
+        "DisableAccessTokenEncryption": false,
+        "EnableTokenEndpoint": true,
+        "EnableAuthorizationEndpoint": true,
+        "EnableLogoutEndpoint": true,
+        "EnableUserInfoEndpoint": true,
+        "EnableIntrospectionEndpoint": true,
+        "EnableRevocationEndpoint": true,
+        "AllowPasswordFlow": false,
+        "AllowClientCredentialsFlow": true,
+        "AllowAuthorizationCodeFlow": true,
+        "AllowRefreshTokenFlow": true,
+        "AllowHybridFlow": false,
+        "AllowImplicitFlow": false,
+        "DisableRollingRefreshTokens": false,
+        "RequireProofKeyForCodeExchange": false,
+        "UseReferenceAccessTokens": false
+      }
+    },
+    {
+      "name": "OpenIdValidationSettings",
+      "OpenIdValidationSettings": {
+        "DisableTokenTypeValidation": false,
+        "Tenant": "Default"
+      }
+    },
+    {
+      "name": "Content",
+      "data": [
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "SharedContent",
+          "DisplayText": "Useful Links",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "SharedContent": {},
+          "AliasPart": {
+            "Alias": "useful-links"
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "[js: uuid()]",
+                "ContentItemVersionId": null,
+                "ContentType": "HtmlRawEditor",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2025-08-28T10:54:01.8842313Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "HtmlRawEditor": {},
+                "HtmlBodyPart": {
+                  "Html": "\u003Cul class=\u0022govuk-list\u0022\u003E\r\n  \u003Cli\u003E\r\n    \u003Ca class=\u0022govuk-link\u0022 href=\u0022#\u0022\u003EBenefits calculators\u003C/a\u003E\r\n  \u003C/li\u003E\r\n  \u003Cli\u003E\r\n    \u003Ca class=\u0022govuk-link\u0022 href=\u0022#\u0022\u003EBenefit overpayments\u003C/a\u003E\r\n  \u003C/li\u003E\r\n  \u003Cli\u003E\r\n    \u003Ca class=\u0022govuk-link\u0022 href=\u0022#\u0022\u003EBenefit fraud\u003C/a\u003E\r\n  \u003C/li\u003E\r\n  \u003Cli\u003E\r\n    \u003Ca class=\u0022govuk-link\u0022 href=\u0022#\u0022\u003EMore\u003C/a\u003E\r\n  \u003C/li\u003E\r\n\u003C/ul\u003E"
+                },
+                "FlowMetadata": {
+                  "Alignment": "Justify",
+                  "Size": 100
+                }
+              }
+            ]
+          },
+          "TitlePart": {
+            "Title": "Useful Links"
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "SharedContent",
+          "DisplayText": "Task List",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "SharedContent": {},
+          "AliasPart": {
+            "Alias": "task-list"
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "4maraxq2nc99z0chrpk237kc4k",
+                "ContentItemVersionId": null,
+                "ContentType": "HtmlRawEditor",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2025-08-28T10:54:37.1618933Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "HtmlRawEditor": {},
+                "HtmlBodyPart": {
+                  "Html": "\u003Cp class=\u0022govuk-body\u0022\u003EYou will have to apply the reverse charge if you supply any of these services:\u003C/p\u003E\r\n\u003Cul class=\u0022govuk-list govuk-list--bullet govuk-list--spaced\u0022\u003E\r\n  \u003Cli\u003E\r\n    constructing, altering, repairing, extending, demolishing or dismantling buildings or structures (whether permanent or not), including offshore installation services\r\n  \u003C/li\u003E\r\n  \u003Cli\u003E\r\n    constructing, altering, repairing, extending, demolishing of any works forming, or planned to form, part of the land, including (in particular) walls, roadworks, power lines, electronic communications equipment, aircraft runways, railways, inland waterways, docks and harbours\r\n  \u003C/li\u003E\r\n  \u003Cli\u003E\r\n    pipelines, reservoirs, water mains, wells, sewers, industrial plant and installations for purposes of land drainage, coast protection or defence\r\n  \u003C/li\u003E\r\n  \u003Cli\u003E\r\n    installing heating, lighting, air-conditioning, ventilation, power supply, drainage, sanitation, water supply or fire protection systems in any building or structure\r\n  \u003C/li\u003E\r\n  \u003Cli\u003E\r\n    internal cleaning of buildings and structures, so far as carried out in the course of their construction, alteration, repair, extension or restoration\r\n  \u003C/li\u003E\r\n  \u003Cli\u003E\r\n    painting or decorating the inside or the external surfaces of any building or structure\r\n  \u003C/li\u003E\r\n  \u003Cli\u003E\r\n    services which form an integral part of, or are part of the preparation or completion of the services described above - including site clearance, earth-moving, excavation, tunnelling and boring, laying of foundations, erection of scaffolding, site restoration, landscaping and the provision of roadways and other access works\r\n  \u003C/li\u003E\r\n\u003C/ul\u003E"
+                },
+                "FlowMetadata": {
+                  "Alignment": "Justify",
+                  "Size": 100
+                }
+              }
+            ]
+          },
+          "TitlePart": {
+            "Title": "Task List"
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Page",
+          "DisplayText": "Home",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "Page": {
+            "JavaScript": {
+              "Text": "function promptAlert(message) {\r\n    alert(message);\r\n}"
+            }
+          },
+          "AliasPart": {
+            "Alias": "home"
+          },
+          "FlowPart": {
+            "Widgets": [
+              {
+                "ContentItemId": "4t19k4xt52p5krkbm9qhdd98d5",
+                "ContentItemVersionId": null,
+                "ContentType": "HtmlEditor",
+                "DisplayText": null,
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2025-08-29T07:28:49.6161181Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": "[js: parameters('AdminUserId')]",
+                "Author": "[js: parameters('AdminUsername')]",
+                "HtmlEditor": {},
+                "HtmlBodyPart": {
+                  "Html": "\u003Ch1 class=\u0022govuk-heading-l\u0022\u003ETest Page\u003C/h1\u003E\n\u003Cp class=\u0022govuk-body\u0022\u003ESome content here\u003C/p\u003E"
+                },
+                "FlowMetadata": {
+                  "Alignment": "Justify",
+                  "Size": 100
+                }
+              }
+            ]
+          },
+          "TitlePart": {
+            "Title": "Home"
+          },
+          "AutoroutePart": {
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false,
+            "Path": "home"
+          },
+          "SeoMetaPart": {
+            "Render": true,
+            "CustomMetaTags": [
+              {
+                "Name": "author",
+                "Property": "",
+                "Content": "Tester Testeropoulos",
+                "HttpEquiv": "",
+                "Charset": ""
+              },
+              {
+                "Name": "content address",
+                "Property": "",
+                "Content": "test address, city, postcode",
+                "HttpEquiv": "",
+                "Charset": ""
+              }
+            ],
+            "DefaultSocialImage": {
+              "Paths": [],
+              "MediaTexts": []
+            },
+            "OpenGraphImage": {
+              "Paths": [],
+              "MediaTexts": []
+            },
+            "TwitterImage": {
+              "Paths": [],
+              "MediaTexts": []
+            },
+            "PageTitle": "Home",
+            "MetaDescription": "This is a test page for running orchard core headless mode and GDS web client in ASP.NET MVC application",
+            "MetaKeywords": "Orchard Core CMS, GDS, ASP.NET MVC, Headless mode, GraphQL",
+            "Canonical": null,
+            "MetaRobots": null,
+            "OpenGraphType": null,
+            "OpenGraphTitle": null,
+            "OpenGraphDescription": null,
+            "TwitterTitle": null,
+            "TwitterDescription": null,
+            "TwitterCard": null,
+            "TwitterCreator": null,
+            "TwitterSite": null,
+            "GoogleSchema": null
+          }
+        }
+      ]
+    }
+  ]
+}
